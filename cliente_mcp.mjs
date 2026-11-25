@@ -101,12 +101,12 @@ function solicitar(metodo, params = undefined) {
 }
 
 // ----------------------------------------------------
-// PARTE 3: Flujo de conversación MCP (Actividad B: 7 mensajes)
+// PARTE 3: Conversación MCP Expandida (Actividad C: 13 mensajes)
 // ----------------------------------------------------
 async function main() {
-  console.log('=== Iniciando Cliente MCP Mínimo (Actividad B) ===');
+  console.log('=== Iniciando Cliente MCP Completo (Actividades B y C) ===');
 
-  // 1. Petición INITIALIZE
+  // 1. Petición INITIALIZE (Msg 1 -> Res 2)
   console.log('[1] Enviando initialize...');
   const resInit = await solicitar('initialize', {
     protocolVersion: '2025-06-18',
@@ -118,16 +118,16 @@ async function main() {
   });
   console.log('    Respuesta initialize recibida:', resInit.result?.serverInfo?.name);
 
-  // 2. Notificación INITIALIZED
+  // 2. Notificación INITIALIZED (Msg 3)
   console.log('[2] Enviando notifications/initialized...');
   notificar('notifications/initialized');
 
-  // 3. Petición TOOLS/LIST
+  // 3. Petición TOOLS/LIST (Msg 4 -> Res 5)
   console.log('[3] Enviando tools/list...');
   const resTools = await solicitar('tools/list', {});
   console.log(`    Herramientas disponibles: ${resTools.result?.tools?.length || 0}`);
 
-  // 4. Invocación de herramienta: list_directory
+  // 4. Invocación: list_directory en "datos" (Msg 6 -> Res 7)
   console.log('[4] Invocando list_directory en "datos"...');
   const resListDir = await solicitar('tools/call', {
     name: 'list_directory',
@@ -135,7 +135,30 @@ async function main() {
   });
   console.log('    Resultado list_directory:', JSON.stringify(resListDir.result?.content));
 
-  console.log('=== Conversación de Actividad B completada con éxito ===');
+  // 5. Invocación: read_text_file en datos/calificaciones.csv (Lectura válida) (Msg 8 -> Res 9)
+  console.log('[5] Invocando read_text_file en "datos/calificaciones.csv" (lectura válida)...');
+  const resReadValid = await solicitar('tools/call', {
+    name: 'read_text_file',
+    arguments: { path: 'datos/calificaciones.csv' }
+  });
+  console.log('    Lectura válida exitosa. Caracteres leídos:', resReadValid.result?.content?.[0]?.text?.length || 0);
+
+  // 6. Invocación: read_text_file fuera de límites (C:/Windows/win.ini) (Tool Execution Error) (Msg 10 -> Res 11)
+  const rutaProhibida = esWindows ? 'C:/Windows/win.ini' : '/etc/hosts';
+  console.log(`[6] Invocando read_text_file fuera de límites: "${rutaProhibida}" (error de ejecución de herramienta)...`);
+  const resReadForbidden = await solicitar('tools/call', {
+    name: 'read_text_file',
+    arguments: { path: rutaProhibida }
+  });
+  console.log('    Resultado fuera de límites (isError):', resReadForbidden.result?.isError);
+  console.log('    Mensaje de denegación:', resReadForbidden.result?.content?.[0]?.text);
+
+  // 7. Petición de método no existente (Protocol Error) (Msg 12 -> Res 13)
+  console.log('[7] Invocando método no existente "herramientas/inventada" (error de protocolo JSON-RPC)...');
+  const resMethodNotFound = await solicitar('herramientas/inventada', {});
+  console.log('    Error de protocolo recibido:', JSON.stringify(resMethodNotFound.error));
+
+  console.log('=== Conversación de Actividad C completada con éxito (13 mensajes) ===');
   servidor.stdin.end();
 }
 
