@@ -1,0 +1,186 @@
+[
+  {
+    "timestamp": "2026-11-24T22:30:01.100Z",
+    "direction": "sent",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "initialize",
+      "params": {
+        "protocolVersion": "2024-11-05",
+        "capabilities": {
+          "roots": {
+            "listChanged": true
+          },
+          "sampling": {}
+        },
+        "clientInfo": {
+          "name": "@modelcontextprotocol/inspector",
+          "version": "0.1.0"
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-11-24T22:30:01.215Z",
+    "direction": "received",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "protocolVersion": "2024-11-05",
+        "capabilities": {
+          "tools": {
+            "listChanged": true
+          }
+        },
+        "serverInfo": {
+          "name": "secure-filesystem-server",
+          "version": "1.0.0"
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-11-24T22:30:01.220Z",
+    "direction": "sent",
+    "message": {
+      "jsonrpc": "2.0",
+      "method": "notifications/initialized"
+    }
+  },
+  {
+    "timestamp": "2026-11-24T22:30:01.225Z",
+    "direction": "sent",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "tools/list",
+      "params": {}
+    }
+  },
+  {
+    "timestamp": "2026-11-24T22:30:01.280Z",
+    "direction": "received",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "tools": [
+          {
+            "name": "read_file",
+            "description": "Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead."
+          },
+          {
+            "name": "read_text_file",
+            "description": "Read the complete contents of a file from the file system as text."
+          },
+          {
+            "name": "read_media_file",
+            "description": "Read a file and return it as a base64-encoded content block with its MIME type."
+          },
+          {
+            "name": "read_multiple_files",
+            "description": "Read the contents of multiple files simultaneously."
+          },
+          {
+            "name": "write_file",
+            "description": "Create a new file or completely overwrite an existing file with new content."
+          },
+          {
+            "name": "create_directory",
+            "description": "Create a new directory or ensure a directory exists."
+          },
+          {
+            "name": "list_directory",
+            "description": "Get a detailed listing of all files and directories in a specified path."
+          },
+          {
+            "name": "move_file",
+            "description": "Move or rename files and directories."
+          },
+          {
+            "name": "search_files",
+            "description": "Recursively search for files and directories matching a pattern."
+          },
+          {
+            "name": "get_file_info",
+            "description": "Retrieve detailed metadata about a file or directory."
+          },
+          {
+            "name": "list_allowed_directories",
+            "description": "Returns the list of directories that this server is allowed to access."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "timestamp": "2026-11-24T22:30:05.340Z",
+    "direction": "sent",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "tools/call",
+      "params": {
+        "name": "list_directory",
+        "arguments": {
+          "path": "datos"
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-11-24T22:30:05.390Z",
+    "direction": "received",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "[FILE] calificaciones.csv"
+          }
+        ],
+        "structuredContent": {
+          "content": "[FILE] calificaciones.csv"
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-11-24T22:30:10.150Z",
+    "direction": "sent",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "method": "tools/call",
+      "params": {
+        "name": "read_text_file",
+        "arguments": {
+          "path": "datos/calificaciones.csv"
+        }
+      }
+    }
+  },
+  {
+    "timestamp": "2026-11-24T22:30:10.220Z",
+    "direction": "received",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "matricula,nombre,parcial1,parcial2,parcial3\nA001,Ana Torres,9.0,8.5,9.5\nA002,Bruno Salas,6.0,7.0,5.5\nA003,Carla Mendez,10.0,9.5,9.0\nA004,Diego Ruiz,5.0,6.5,5.0\nA005,Elena Castro,8.0,8.0,8.5\nA006,Fabian Ortiz,7.5,6.0,7.0\nA007,Gabriela Luna,9.5,10.0,9.0\nA008,Hector Vega,4.5,5.0,6.5\n"
+          }
+        ],
+        "structuredContent": {
+          "content": "matricula,nombre,parcial1,parcial2,parcial3\nA001,Ana Torres,9.0,8.5,9.5\nA002,Bruno Salas,6.0,7.0,5.5\nA003,Carla Mendez,10.0,9.5,9.0\nA004,Diego Ruiz,5.0,6.5,5.0\nA005,Elena Castro,8.0,8.0,8.5\nA006,Fabian Ortiz,7.5,6.0,7.0\nA007,Gabriela Luna,9.5,10.0,9.0\nA008,Hector Vega,4.5,5.0,6.5\n"
+        }
+      }
+    }
+  }
+]
