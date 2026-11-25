@@ -1,0 +1,55 @@
+=== ACTIVIDAD D: COMPARATIVA DE CLIENTES Y EXPERIMENTO DE PROTOCOLO ===
+
+1. TABLA COMPARATIVA DE CLIENTES (Sección 8 de la Guía)
+------------------------------------------------------------------------------------------------------------------------
+Parámetro                             | MCP Inspector (salida/historial_inspector.json) | Cliente Artesanal (salida/traza.jsonl)
+--------------------------------------+-------------------------------------------------+---------------------------------------
+Versión de protocolo propuesta        | 2024-11-05                                      | 2025-06-18
+Versión de protocolo aceptada         | 2024-11-05                                      | 2025-06-18
+Nombre del cliente (clientInfo.name)  | @modelcontextprotocol/inspector                 | cliente-mcp-minimo
+Versión del cliente (clientInfo.vers) | 0.1.0                                           | 1.0.0
+Capacidades cliente (capabilities)    | roots (listChanged: true), sampling: {}         | {} (vacías)
+Nombre del servidor (serverInfo.name) | secure-filesystem-server                        | secure-filesystem-server
+Versión del servidor (serverInfo.ver) | 1.0.0                                           | 1.0.0
+Capacidades servidor (capabilities)   | tools (listChanged: true)                       | tools (listChanged: true)
+------------------------------------------------------------------------------------------------------------------------
+
+2. EXPERIMENTO: PRUEBA DE NEGOCIACIÓN CON VERSIÓN NO COMPATIBLE ('1999-01-01')
+------------------------------------------------------------------------------------------------------------------------
+Petición enviada:
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "initialize",
+  "params": {
+    "protocolVersion": "1999-01-01",
+    "capabilities": {},
+    "clientInfo": { "name": "cliente-mcp-minimo", "version": "1.0.0" }
+  }
+}
+
+Respuesta recibida del servidor:
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "tools": { "listChanged": true }
+    },
+    "serverInfo": {
+      "name": "secure-filesystem-server",
+      "version": "1.0.0"
+    }
+  }
+}
+
+3. ANÁLISIS DEL COMPORTAMIENTO OBSERVADO:
+------------------------------------------------------------------------------------------------------------------------
+- El servidor MCP NO lanza un error JSON-RPC de protocolo (ni aborta la conexión stdio).
+- En su lugar, el servidor responde con un objeto "result" estándar y propone su versión compatible más reciente (2025-11-25).
+- Esto demuestra que la negociación de versiones en MCP se realiza de forma flexible a nivel de aplicación durante el handshake initialize, permitiendo al cliente evaluar si es capaz de interoperar con la versión ofrecida por el servidor o terminar la sesión si existiese incompatibilidad mayor.
+
+4. RESTAURACIÓN DE VERSIÓN:
+------------------------------------------------------------------------------------------------------------------------
+Se restauró la versión '2025-06-18' en cliente_mcp.mjs y se ejecutó nuevamente para mantener salida/traza.jsonl en su estado canónico de 13 mensajes correspondientes a la Actividad C.
