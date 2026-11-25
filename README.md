@@ -68,6 +68,16 @@ practica2-mcp/
    ```
    - El script ejecutará automáticamente el subproceso, enviará las peticiones planificadas, procesará las respuestas y generará el archivo `salida/traza.jsonl` con exactamente 13 mensajes estructurados.
 
+### Historial de entregables y commits
+El repositorio conserva un historial de commits riguroso correspondiente a cada actividad de la rúbrica:
+- `Estructura inicial`: Carpetas `datos/`, `salida/`, `evidencias/`, `mcp.json` y `calificaciones.csv`.
+- `Actividad A`: Inspección interactiva, `historial_inspector.json` y capturas sanitizadas en `evidencias/`.
+- `Actividad B`: Implementación de `cliente_mcp.mjs` y traza inicial de 7 mensajes en `salida/traza.jsonl`.
+- `Actividad C`: Expansión a 13 mensajes, tipología de errores y anonimización de privacidad `TU_USUARIO`.
+- `Actividad D`: Comparativa formal de clientes y experimento de negociación de versión de protocolo.
+- `Actividad E`: Modelado completo con diagrama de secuencia Mermaid sin caracteres conflictivos.
+- `README y evidencias`: Consolidación final de documentación técnica en español y evidencias listas para entrega.
+
 ---
 
 ## 3. Actividad A: Inspección interactiva con MCP Inspector
