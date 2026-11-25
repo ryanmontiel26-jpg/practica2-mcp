@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Node.js: Ejecutar cliente_mcp.mjs",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/cliente_mcp.mjs",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Node.js: Depurar cliente_mcp.mjs con Pausa",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/cliente_mcp.mjs",
+      "stopOnEntry": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

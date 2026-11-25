@@ -1,0 +1,67 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "MCP: Ejecutar Cliente MCP (cliente_mcp.mjs)",
+      "type": "shell",
+      "command": "node",
+      "args": ["${workspaceFolder}/cliente_mcp.mjs"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "MCP: Lanzar Inspector MCP en Navegador",
+      "type": "shell",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/inspector", "--config", "${workspaceFolder}/mcp.json"],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "MCP: Ver Traza JSONL (13 Mensajes)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "Get-Content -Path '${workspaceFolder}/salida/traza.jsonl' | ForEach-Object { $_ }"
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "MCP: Contar Líneas de Traza (Verificar 13 mensajes)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "Write-Host 'Total de mensajes en salida/traza.jsonl:' (Get-Content '${workspaceFolder}/salida/traza.jsonl').Count"
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

@@ -68,6 +68,17 @@ practica2-mcp/
    ```
    - El script ejecutará automáticamente el subproceso, enviará las peticiones planificadas, procesará las respuestas y generará el archivo `salida/traza.jsonl` con exactamente 13 mensajes estructurados.
 
+### Integración y ejecución directa en Visual Studio Code
+El repositorio incluye configuración nativa de VS Code en la carpeta `.vscode/`:
+- **Atajo F5 (Run & Debug):** Ejecuta inmediatamente `cliente_mcp.mjs` en la terminal integrada con depurador activo.
+- **Atajo Ctrl + Shift + B (Tarea predeterminada):** Ejecuta `MCP: Ejecutar Cliente MCP (cliente_mcp.mjs)`.
+- **Menú de tareas (Terminal > Run Task...):**
+  - `MCP: Ejecutar Cliente MCP (cliente_mcp.mjs)`
+  - `MCP: Lanzar Inspector MCP en Navegador`
+  - `MCP: Ver Traza JSONL (13 Mensajes)`
+  - `MCP: Contar Líneas de Traza (Verificar 13 mensajes)`
+- **Runner Interactivo Windows (`ejecutar.bat`):** Permite lanzar un menú interactivo en consola con un solo clic o ejecutando `.\ejecutar.bat`.
+
 ### Historial de entregables y commits
 El repositorio conserva un historial de commits riguroso correspondiente a cada actividad de la rúbrica:
 - `Estructura inicial`: Carpetas `datos/`, `salida/`, `evidencias/`, `mcp.json` y `calificaciones.csv`.
