@@ -8,6 +8,6 @@
 {"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"read_text_file","arguments":{"path":"datos/calificaciones.csv"}}}
 {"result":{"content":[{"type":"text","text":"matricula,nombre,parcial1,parcial2,parcial3\nA001,Ana Torres,9.0,8.5,9.5\nA002,Bruno Salas,6.0,7.0,5.5\nA003,Carla Mendez,10.0,9.5,9.0\nA004,Diego Ruiz,5.0,6.5,5.0\nA005,Elena Castro,8.0,8.0,8.5\nA006,Fabian Ortiz,7.5,6.0,7.0\nA007,Gabriela Luna,9.5,10.0,9.0\nA008,Hector Vega,4.5,5.0,6.5\n"}],"structuredContent":{"content":"matricula,nombre,parcial1,parcial2,parcial3\nA001,Ana Torres,9.0,8.5,9.5\nA002,Bruno Salas,6.0,7.0,5.5\nA003,Carla Mendez,10.0,9.5,9.0\nA004,Diego Ruiz,5.0,6.5,5.0\nA005,Elena Castro,8.0,8.0,8.5\nA006,Fabian Ortiz,7.5,6.0,7.0\nA007,Gabriela Luna,9.5,10.0,9.0\nA008,Hector Vega,4.5,5.0,6.5\n"}},"jsonrpc":"2.0","id":4}
 {"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"read_text_file","arguments":{"path":"C:/Windows/win.ini"}}}
-{"result":{"content":[{"type":"text","text":"Access denied - path outside allowed directories: C:\\Windows\\win.ini not in C:\\Users\\TU_USUARIO\\.gemini\\antigravity\\scratch\\practica2-mcp"}],"isError":true},"jsonrpc":"2.0","id":5}
+{"result":{"content":[{"type":"text","text":"Access denied - path outside allowed directories: C:\\Windows\\win.ini not in C:\\Users\\TU_USUARIO\\OneDrive\\TrabajosVS\\TopicozAvn\\practica2-mcp"}],"isError":true},"jsonrpc":"2.0","id":5}
 {"jsonrpc":"2.0","id":6,"method":"herramientas/inventada","params":{}}
 {"jsonrpc":"2.0","id":6,"error":{"code":-32601,"message":"Method not found"}}

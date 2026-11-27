@@ -1,4 +1,4 @@
-# Práctica 2: Ver el protocolo MCP por dentro
+﻿# Práctica 2: Ver el protocolo MCP por dentro
 
 **Ingeniería en Sistemas Computacionales**  
 **Asignatura / Módulo:** Agentes Inteligentes y Model Context Protocol (MCP)  
@@ -52,7 +52,7 @@ practica2-mcp/
 
 1. **Clonar o acceder al proyecto:**
    ```powershell
-   cd C:\Users\hassa\.gemini\antigravity\scratch\practica2-mcp
+   cd C:\Users\hassa\OneDrive\TrabajosVS\TopicozAvn\practica2-mcp
    ```
 
 2. **Ejecutar el Inspector MCP (Actividad A):**
@@ -276,3 +276,4 @@ sequenceDiagram
 - [Repositorio Oficial Model Context Protocol en GitHub](https://github.com/modelcontextprotocol) — Código fuente y documentación de referencia del Inspector y servidores oficiales.
 - [Node.js Child Process Documentation](https://nodejs.org/api/child_process.html) — Documentación de API para gestión de subprocesos sobre `stdio`.
 - [Node.js Readline Module Documentation](https://nodejs.org/api/readline.html) — API para procesamiento línea a línea de streams en Node.js.
+
